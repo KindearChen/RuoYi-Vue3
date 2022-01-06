@@ -7,9 +7,11 @@ export function useDict(...args) {
   const res = ref({});
   return (() => {
     args.forEach((d, index) => {
+      // console.log(d)
       res.value[d] = [];
       getDicts(d).then(resp => {
-        res.value[d] = resp.data.map(p => ({ label: p.dictLabel, value: p.dictValue, elTagType: p.listClass }))
+        //修改了一下
+        res.value[d] = resp.map(p => ({ label: p.dictLabel, value: p.dictValue, elTagType: p.listClass }))
       })
     })
     return toRefs(res.value);

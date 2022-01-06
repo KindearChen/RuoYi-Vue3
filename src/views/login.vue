@@ -125,7 +125,8 @@ function getCode() {
   getCodeImg().then(res => {
     captchaOnOff.value = res.captchaOnOff === undefined ? true : res.captchaOnOff;
     if (captchaOnOff.value) {
-      codeUrl.value = "data:image/gif;base64," + res.img;
+      //codeUrl.value = "data:image/gif;base64," + res.img;
+      codeUrl.value = res.img;
       loginForm.value.uuid = res.uuid;
     }
   });

@@ -6,6 +6,7 @@ export function listMenu(query) {
     url: '/system/menu/list',
     method: 'get',
     params: query
+    
   })
 }
 

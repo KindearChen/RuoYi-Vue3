@@ -41,6 +41,52 @@ const permission = {
       return new Promise(resolve => {
         // 向后端请求路由数据
         getRouters().then(res => {
+          // MOCK 一下后端数据
+          res.data = [{
+            "name": "System",
+            "path": "/system",
+            "hidden": false,
+            "redirect": "noRedirect",
+            "component": "Layout",
+            "alwaysShow": true,
+            "meta": {
+              "title": "系统管理",
+              "icon": "system",
+              "noCache": false
+            },
+            "children": [{
+              "name": "User",
+              "path": "user",
+              "hidden": false,
+              "component": "system/user/index",
+              "meta": {
+                "title": "用户管理",
+                "icon": "user",
+                "noCache": false
+              }
+            }, {
+              "name": "Role",
+              "path": "role",
+              "hidden": false,
+              "component": "system/role/index",
+              "meta": {
+                "title": "角色管理",
+                "icon": "peoples",
+                "noCache": false
+              }
+            }, {
+              "name": "Menu",
+              "path": "menu",
+              "hidden": false,
+              "component": "system/menu/index",
+              "meta": {
+                "title": "菜单管理",
+                "icon": "tree-table",
+                "noCache": false
+              }
+            }]
+          }];
+
           const sdata = JSON.parse(JSON.stringify(res.data))
           const rdata = JSON.parse(JSON.stringify(res.data))
           const defaultData = JSON.parse(JSON.stringify(res.data))

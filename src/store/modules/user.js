@@ -38,6 +38,7 @@ const user = {
       const uuid = userInfo.uuid
       return new Promise((resolve, reject) => {
         login(username, password, code, uuid).then(res => {
+          //console.log(res)
           setToken(res.token)
           commit('SET_TOKEN', res.token)
           resolve()
@@ -51,7 +52,8 @@ const user = {
     GetInfo({ commit, state }) {
       return new Promise((resolve, reject) => {
         getInfo().then(res => {
-          const user = res.user
+          console.log(res)
+          const user = res
           const avatar = user.avatar == "" ? defAva : import.meta.env.VITE_APP_BASE_API + user.avatar;
 
           if (res.roles && res.roles.length > 0) { // 验证返回的roles是否是一个非空数组
@@ -61,9 +63,11 @@ const user = {
             commit('SET_ROLES', ['ROLE_DEFAULT'])
           }
           commit('SET_NAME', user.userName)
+          //
           commit('SET_AVATAR', avatar)
           resolve(res)
         }).catch(error => {
+          console.log('用户信息赋值异常')
           reject(error)
         })
       })

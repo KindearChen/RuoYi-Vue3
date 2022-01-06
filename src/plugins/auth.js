@@ -1,6 +1,7 @@
 import store from '@/store'
 
 function authPermission(permission) {
+  console.log('校验权限')
   const all_permission = "*:*:*";
   const permissions = store.getters && store.getters.permissions
   if (permission && permission.length > 0) {
@@ -13,6 +14,7 @@ function authPermission(permission) {
 }
 
 function authRole(role) {
+  console.log('校验角色')
   const super_admin = "admin";
   const roles = store.getters && store.getters.roles
   if (role && role.length > 0) {

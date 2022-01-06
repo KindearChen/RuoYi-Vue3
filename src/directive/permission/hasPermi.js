@@ -15,11 +15,13 @@ export default {
       const permissionFlag = value
 
       const hasPermissions = permissions.some(permission => {
-        return all_permission === permission || permissionFlag.includes(permission)
+        //return all_permission === permission || permissionFlag.includes(permission)
+        return true;
       })
 
       if (!hasPermissions) {
-        el.parentNode && el.parentNode.removeChild(el)
+       // el.parentNode && el.parentNode.removeChild(el)
+       return false;
       }
     } else {
       throw new Error(`请设置操作权限标签值`)
